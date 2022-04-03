@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.movie.booking.data.Booking;
 import com.movie.booking.data.BookingSelection;
@@ -27,6 +28,7 @@ import lombok.extern.log4j.Log4j2;
 
 @Service
 @Log4j2
+@Transactional
 public class BookingService {
 	
 	@Autowired
@@ -100,14 +102,12 @@ public class BookingService {
 						// Save
 						seatsReserved.add(seatReservedRepository.save(reserveSeat));
 					} else {
-						log.info("Seat " + seat.get().getSeatId() + " is not available for booking.");
+						throw new RuntimeException("Seat " + seat.get().getSeatId() + " is not available for booking.");
 					}
 				}
 			}
 			
 		}
-		
-		
 		
 		return seatsReserved;
 	}
