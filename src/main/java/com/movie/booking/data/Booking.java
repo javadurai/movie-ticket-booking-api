@@ -1,18 +1,20 @@
 package com.movie.booking.data;
 
+import java.util.List;
+
 import lombok.Data;
 
 @Data
 public class Booking {
-	
-	private Long seatId;
-	
+		
 	private Long screeningId;
 	
 	private Long employeeReservedId;
 	
 	private Long employeePaidId;
 	
-	private Long reservationTypeId;
-
+	private String reservationContact;
+	
+	private List<BookingSelection> selection;
+	
 }

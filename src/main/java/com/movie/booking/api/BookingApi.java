@@ -1,7 +1,6 @@
 package com.movie.booking.api;
 
 import java.util.Collection;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,9 +20,9 @@ public class BookingApi {
 	private BookingService bookingService;
 	
 	@PostMapping("/book")
-	Collection<SeatReserved> bookSeats(@RequestBody List<Booking> bookings){
+	Collection<SeatReserved> bookSeats(@RequestBody Booking booking){
 		
-		return bookingService.bookSeats(bookings);		
+		return bookingService.bookSeats(booking);		
 	}
 
 }

@@ -14,19 +14,15 @@ import com.movie.booking.service.SeatsService;
 @RestController
 @RequestMapping("seats/")
 public class SeatsApi {
-	
+
 	@Autowired
 	private SeatsService seatsService;
-	
+
 	@GetMapping("/for-screening/{id}")
-	public Collection<Seat> seatsForScreening(@PathVariable Long id){
-		
-		return seatsService.getSeatsAvailability(id);		
-	}
-	
-	@GetMapping("for-auditorium1/{id}")
-	public Long seatsFromuditorium1(@PathVariable Long id){
-		return id;		
+//	@JsonIgnoreProperties({ "seat.row" })
+	public Collection<Seat> seatsForScreening(@PathVariable Long id) {
+
+		return seatsService.getSeatsAvailability(id);
 	}
 
 }
